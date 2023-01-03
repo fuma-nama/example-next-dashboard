@@ -1,18 +1,12 @@
 import { Inter } from "@next/font/google";
 import clsx from "clsx";
-import { useTheme } from "next-themes";
 import { ReactNode } from "react";
-import { FiSun } from "react-icons/fi";
-import {
-  RiDashboardFill,
-  RiHomeFill,
-  RiMoonFill,
-  RiNotificationFill,
-  RiProfileFill,
-  RiSettingsFill,
-} from "react-icons/ri";
+import { RiHomeFill, RiNotificationFill, RiProfileFill } from "react-icons/ri";
+import { IoMdSettings } from "react-icons/io";
 import Sidebar, { SidebarItem } from "@components/layouts/Sidebar";
 import Navbar from "@components/layouts/Navbar";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,11 +42,47 @@ function DashboardSidebar() {
         route="/dashboard/notifications"
       />
       <div className="mt-auto" />
-      <SidebarItem
-        name="Settings"
-        icon={RiSettingsFill}
-        route="/dashboard/settings"
-      />
+      <UserCard />
     </Sidebar>
+  );
+}
+
+function UserCard() {
+  const { data } = useSession();
+  if (data == null || data.user == null) return <></>;
+
+  return (
+    <Link
+      href="/dashboard/settings"
+      className={clsx(
+        "flex flex-row gap-2 items-center w-full p-2 rounded-xl",
+        "transition-all cursor-pointer hover:bg-gray-300/60 dark:hover:bg-gray-800/60"
+      )}
+    >
+      {data.user.image != null && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={data.user?.image}
+          width="40"
+          height="40"
+          alt="avatar"
+          className="aspect-square rounded-full h-auto"
+        />
+      )}
+      <div className="flex-1 w-0">
+        <p className="font-bold">{data.user.name}</p>
+        <p
+          className={clsx(
+            "text-secondary text-sm text-ellipsis whitespace-nowrap overflow-hidden",
+            "max-w-[140px] lg:max-w-none"
+          )}
+        >
+          {data.user.email}
+        </p>
+      </div>
+      <button className="ml-auto text-3xl" aria-label="Settings">
+        <IoMdSettings />
+      </button>
+    </Link>
   );
 }

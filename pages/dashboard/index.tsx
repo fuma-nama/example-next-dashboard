@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Layout from "./_layout";
+import styles from "./card.module.css";
 
 export default function DashboardPage() {
   return (
@@ -11,13 +12,42 @@ export default function DashboardPage() {
         </p>
         <button
           className={clsx(
-            "font-bold py-2 px-6 w-fit rounded-xl shadow-lg",
-            "bg-blue-500 shadow-blue-300 dark:bg-blue-600 dark:shadow-blue-800 text-white"
+            "font-bold py-2 px-5 w-fit rounded-xl",
+            "bg-blue-300/50 text-blue-500 dark:bg-blue-700/30 dark:text-blue-500"
           )}
         >
-          Learn More
+          Learn More <span className="ml-2">{`->`}</span>
         </button>
       </div>
+      <div className="grid grid-cols-3 mt-10 gap-5">
+        <Card
+          title="Discord Bot Dashboard"
+          description="Next-gen discord bot Dashboard built with Chakra UI & React.js"
+        />
+        <Card
+          title="Next.js Full-Stack Admin Dashboard"
+          description="Fast performance Dashboard with Full-stack Backend with Typescript"
+        />
+        <Card
+          title="Powerful Chat App"
+          description="Modern chat app that runs on Web, based on popular UI frameworks"
+        />
+      </div>
     </Layout>
+  );
+}
+
+type CardProps = {
+  title: string;
+  description: string;
+};
+function Card({ title, description }: CardProps) {
+  return (
+    <div className={styles.card}>
+      <h2 className="text-xl font-bold">{title}</h2>
+      <p className="text-gray-700 dark:text-gray-300">{description}</p>
+      <div className="mt-auto" />
+      <button className="button-primary mt-4">Open</button>
+    </div>
   );
 }
