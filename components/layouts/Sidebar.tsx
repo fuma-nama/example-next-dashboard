@@ -8,9 +8,9 @@ export default function Sidebar({ children }: { children: ReactNode }) {
   return (
     <div
       className={clsx(
-        "w-[17rem] h-full backdrop-blur-md px-5 pt-3 pb-5",
+        "min-w-[17rem] h-full backdrop-blur-md px-5 pt-3 pb-5",
         "bg-white/50 dark:bg-black/50",
-        "hidden sm:flex flex-col gap-2 items-stretch"
+        "hidden md:flex flex-col gap-2 items-stretch"
       )}
     >
       {children}
