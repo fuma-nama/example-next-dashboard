@@ -45,7 +45,7 @@ export default function Home() {
           {status === "unauthenticated" && (
             <button
               className={clsx(
-                "bg-blue-300 text-white rounded-xl p-4 font-bold",
+                "bg-blue-500 text-white rounded-xl p-4 font-bold",
                 "dark:bg-blue-600 dark:text-white"
               )}
               onClick={() => signIn()}
@@ -56,7 +56,7 @@ export default function Home() {
           {status === "authenticated" && (
             <button
               className={clsx(
-                "bg-red-300 text-white rounded-xl p-4 font-bold",
+                "bg-red-500 text-white rounded-xl p-4 font-bold",
                 "dark:bg-red-600 dark:text-white"
               )}
               onClick={() => signOut()}

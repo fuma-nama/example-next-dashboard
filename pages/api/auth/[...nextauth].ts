@@ -3,6 +3,9 @@ import GithubProvider from "next-auth/providers/github";
 
 export default NextAuth({
   debug: true,
+  pages: {
+    signIn: "/auth/signin",
+  },
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -10,4 +13,3 @@ export default NextAuth({
     }),
   ],
 });
-console.log(process.env.GITHUB_SECRET);
