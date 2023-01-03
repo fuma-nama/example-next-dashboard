@@ -1,6 +1,6 @@
+import Card from "@components/Card";
 import clsx from "clsx";
 import Layout from "./_layout";
-import styles from "./card.module.css";
 
 export default function DashboardPage() {
   return (
@@ -34,20 +34,5 @@ export default function DashboardPage() {
         />
       </div>
     </Layout>
-  );
-}
-
-type CardProps = {
-  title: string;
-  description: string;
-};
-function Card({ title, description }: CardProps) {
-  return (
-    <div className={styles.card}>
-      <h2 className="text-xl font-bold">{title}</h2>
-      <p className="text-gray-700 dark:text-gray-300">{description}</p>
-      <div className="mt-auto" />
-      <button className="button-primary mt-4">Open</button>
-    </div>
   );
 }
