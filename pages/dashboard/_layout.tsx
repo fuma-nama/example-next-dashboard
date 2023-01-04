@@ -1,16 +1,17 @@
 import { Inter } from "@next/font/google";
 import clsx from "clsx";
-import { ReactNode } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { RiHomeFill, RiNotificationFill, RiProfileFill } from "react-icons/ri";
 import { IoMdSettings } from "react-icons/io";
 import Sidebar, { SidebarItem } from "@components/layouts/Sidebar";
 import Navbar from "@components/layouts/Navbar";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout(props: ComponentProps<"div">) {
   return (
     <main
       className={clsx(
@@ -19,9 +20,15 @@ export default function Layout({ children }: { children: ReactNode }) {
       )}
     >
       <Navbar />
-      <div className="flex flex-row flex-1 overflow-auto">
+      <div className="flex flex-row flex-1 overflow-visible">
         <DashboardSidebar />
-        <div className="p-4">{children}</div>
+        <div
+          {...props}
+          className={twMerge(
+            "p-4 overflow-x-visible overflow-y-auto relative",
+            props.className
+          )}
+        />
       </div>
     </main>
   );

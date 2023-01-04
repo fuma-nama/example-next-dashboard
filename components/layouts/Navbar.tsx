@@ -10,8 +10,8 @@ export default function Navbar() {
   return (
     <nav
       className={clsx(
-        "bg-white/50 dark:bg-black/60 backdrop-blur-lg sticky top-0",
-        "px-5 md:pl-11 h-16 w-full items-center justify-between",
+        "backdrop-blur-lg sticky top-0 z-10",
+        "p-5 md:pl-11 w-full items-center justify-between bg-white/50 dark:bg-black/60",
         "flex flex-row gap-3"
       )}
     >

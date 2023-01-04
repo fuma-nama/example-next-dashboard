@@ -8,7 +8,7 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" disableTransitionOnChange>
       <SessionProvider session={session}>
         <Component {...pageProps} />
       </SessionProvider>

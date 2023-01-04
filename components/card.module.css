@@ -1,24 +1,22 @@
 .card {
   padding: 30px;
-  --shadow: 0.1;
-  --tl-shadow: rgb(237, 245, 248);
-  --br-shadow: rgb(220, 229, 234);
-  box-shadow: inset 8px 8px 10px var(--tl-shadow),
-    inset -12px -12px 13px var(--br-shadow),
-    2px 12px 14px rgba(0, 0, 0, var(--shadow));
   transition: all 0.3s;
   @apply flex flex-col gap-2 cursor-pointer rounded-xl p-6 pb-7;
 }
 
-:global(.dark) .card {
-  --tl-shadow: rgb(53, 55, 56);
-  --br-shadow: rgb(15, 17, 18);
+:global(.light) .card {
+  --tl-shadow: rgb(237, 245, 248);
+  --br-shadow: rgb(220, 229, 234);
 
-  @apply border-[1px] border-gray-700 bg-gray-900/30 hover:border-gray-200 hover:bg-gray-700/30;
+  box-shadow: inset 8px 8px 10px var(--tl-shadow),
+    inset -12px -12px 13px var(--br-shadow),
+    7px 7px 14px rgba(220, 229, 234, 0.7),
+    -12px -12px 10px rgba(255, 255, 255, 0.4);
+  @apply text-gray-600;
 }
 
-.card:hover {
-  --shadow: 0.2;
+:global(.dark) .card {
+  @apply border-[1px] border-gray-700 bg-gray-900/30 hover:border-gray-200 hover:bg-gray-700/30;
 }
 
 .card-arrow {

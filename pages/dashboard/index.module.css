@@ -1,0 +1,4 @@
+.gradient-1 {
+  background: conic-gradient(from 35deg, red, blue);
+  filter: blur(90px);
+}
